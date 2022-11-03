@@ -52,9 +52,8 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             title: 'My Gallery',
             theme: AppTheme.lightTheme,
-            home: const GalleryScreen(),
             onGenerateRoute: RoutesGenerator.getRoutes,
-            // initialRoute: RoutesManager.loginRoute,
+            initialRoute: RoutesManager.loginRoute,
 
             /// App localization
             localizationsDelegates: const [
