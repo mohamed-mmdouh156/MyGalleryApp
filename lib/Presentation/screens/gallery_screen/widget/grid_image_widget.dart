@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_gallery/Presentation/resources/app_size_config.dart';
+import 'package:my_gallery/constants/constants.dart';
 
 class GridImageWidget extends StatelessWidget {
   final String image;
@@ -18,7 +19,8 @@ class GridImageWidget extends StatelessWidget {
           elevation: 2.0,
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: Image(
-            image: NetworkImage(image),
+            // image: NetworkImage(image),
+            image: NetworkImage('${AppConstants.baseUrl}/media/1/$image'),
             fit: BoxFit.fill,
           ),
         ),

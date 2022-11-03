@@ -21,6 +21,8 @@ class GalleryScreen extends StatelessWidget {
     return BlocConsumer<AppCubit,AppStates>(
       listener: (context, state){},
       builder: (context, state){
+        List<String> galleryImages = AppCubit.get(context).galleryImages;
+
         return Container(
           decoration: homeBackgroundDecoration,
           child: Scaffold(
@@ -94,7 +96,9 @@ class GalleryScreen extends StatelessWidget {
                   ),
 
                   // image grid view
-                  Expanded(
+                  state is GetGalleryLoadingState? const Center(
+                    child: CircularProgressIndicator(),
+                  ) :Expanded(
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: SizeConfig.height*0.02,
@@ -105,7 +109,7 @@ class GalleryScreen extends StatelessWidget {
                         ),
                         physics: const BouncingScrollPhysics(),
                         itemBuilder: (context,index){
-                          return GridImageWidget(image: 'https://img.freepik.com/free-photo/courage-man-jump-through-gap-hill-business-concept-idea_1323-262.jpg',);
+                          return GridImageWidget(image: galleryImages[index],);
                         },
                         itemCount: 20,
                       ),

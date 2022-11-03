@@ -16,7 +16,7 @@ class AppCubit extends Cubit<AppStates>{
   static AppCubit get(context) => BlocProvider.of(context);
 
   GalleryModel? galleryModel;
-
+  List<String> galleryImages=[];
 
   // get gallery form Api
   Future<void> getGallery ()async {
@@ -28,10 +28,14 @@ class AppCubit extends Cubit<AppStates>{
 
       galleryModel = GalleryModel.fromMap(value.data);
 
+      for (var element in galleryModel!.data.images) {
+        final result = element.split('/');
+        galleryImages.add(result.last);
+      }
+
       if (kDebugMode) {
         print('get gallery success : ${galleryModel!.data.images.toString()}');
       }
-
       emit(GetGallerySuccessState());
     }).catchError((error){
       if (kDebugMode) {

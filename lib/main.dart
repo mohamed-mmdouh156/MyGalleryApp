@@ -44,6 +44,7 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(create: (BuildContext context) => LoginCubit()),
         BlocProvider(create: (BuildContext context) => LocalizationCubit()..fetchLocalization()),
       ],
+
       child: BlocConsumer<LocalizationCubit,LocalizationStates>(
         listener: (context,state){},
         builder: (context,state){
